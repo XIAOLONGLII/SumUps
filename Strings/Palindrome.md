@@ -46,3 +46,43 @@ private String extend(String s, int left, int right) {
   return s.substring(left + 1, right)
 }
 ```
+
+------------------------
+
+3. (medium) find the longest palindrome substring's length in a string
+
+```html
+The same idea of find the longest substring. 
+We will store the length to max, then return it
+```
+```java
+
+public int longestPalindrome(String s) {
+  int result = 0;
+   for(int i = 0; i < s.length(); i++) {
+      String oddStr = extends(s, i, i);
+      String evenStr = extends(s, i, i+1);
+      result = Math.max(odd.length(), evenStr.length());
+   }
+   return result;
+
+}
+private String extends(String s, int left, int right) {
+  while(left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+    left--;
+    right++; //向左和右扩展 然后去发现palindrome
+  }
+  return s.substring(left + 1, right); // right is exclusive
+}
+
+```
+
+
+
+
+
+
+
+
+
+
