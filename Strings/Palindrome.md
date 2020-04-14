@@ -57,15 +57,20 @@ We will store the length to max, then return it
 ```
 ```java
 
-public int longestPalindrome(String s) {
-  int result = 0;
-   for(int i = 0; i < s.length(); i++) {
-      String oddStr = extends(s, i, i);
-      String evenStr = extends(s, i, i+1);
-      result = Math.max(odd.length(), evenStr.length());
-   }
-   return result;
-
+public static int findLongestPalindrome(String s) {
+ 
+    int max = 0;
+    for(int i = 0; i < s.length(); i++) {
+      String oddLengthPalindrome = extend(s, i, i);
+      String evenLengthPalindrome = extend(s, i, i + 1);
+      if(oddLengthPalindrome.length() > max) {
+        max = oddLengthPalindrome.length();
+      }
+      if(evenLengthPalindrome.length() > max) {
+        max = evenLengthPalindrome.length();
+      }
+    }
+    return max;
 }
 private String extends(String s, int left, int right) {
   while(left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
