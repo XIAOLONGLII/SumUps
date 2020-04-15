@@ -81,9 +81,44 @@ private String extends(String s, int left, int right) {
 }
 
 ```
+------------------------
 
+4. find all substrings are palindromes
 
+```java
+import java.util.*;
+class allPalindromes {
+  // all substring of Strings are palindrome
+  public static void main(String[] args) {
+    String s = "abbcbb";
+    System.out.println(findPalindromes(s));
+  }
 
+  private static HashSet<String> findPalindromes(String s) {
+
+      HashSet<String> list = new HashSet<>();
+      for(int i = 0; i < s.length(); i++) {
+        String odd = palindromeSpreads(s, i, i);
+        String even = palindromeSpreads(s, i, i + 1);
+        if(odd.length() != 0){
+           list.add(odd);
+          }
+         if(even.length() != 0 ){
+            list.add(even);
+          }
+      }
+      return list;
+  }
+  private static String palindromeSpreads(String s, int left, int right) {
+
+    while(left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+      left--;
+      right++;
+    }
+    return s.substring(left + 1, right);
+  }
+}
+```
 
 
 
