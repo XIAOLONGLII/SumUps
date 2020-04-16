@@ -148,6 +148,47 @@ private boolean isPalindrome(String s, int left, int right) {
 }
 ```
 
+6.(easy) Palindrome LinkedList leetcode(234)
+```html
+1. find middle point of LL.
+2. reverse the second half 
+3. compare first half with revesed second half, if it is not the same(value), break, return false
+```
+```java
+public boolean palindromeInLL(ListNode head) {
+   if(head == null) return true;
+  //1. find middle point of LL
+  ListNode walker = head;
+  ListNode runner = head;
+  while(runner.next != null && runner.next.next != null) {
+    walker = walker.next;
+    runner = runner.next.next;
+  }
+  
+  //2. reverse LL 
+  ListNode prev = null; 
+  ListNode curr = walker.next;
+  while(curr!= null) {
+    ListNode temp = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = temp;
+  }
+  
+  //3. comparing each node from first half and 2nd half
+  ListNode head1 = head;
+  ListNode head2 = prev;
+  boolean equal = truel
+  while(equal && head2 != null) {
+    if(head1.val != head2.val) return false;
+    head1 = head1.next;
+    head2 = head2.next;
+  }
+  return equal
+
+}
+```
+
 
 
 
