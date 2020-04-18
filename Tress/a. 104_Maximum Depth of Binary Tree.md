@@ -54,7 +54,7 @@ return its depth = 3.
 ```
 
 ```html
-2. 
+2. DFS root -> left (right) -> left.left (right->right)
 Use a stack to solve this problem.
 
 Stack has feature of pop(), and push()
@@ -93,4 +93,35 @@ public int maxDepth(TreeNode root) {
     return result;
 }
 
+```
+
+```html
+3. 
+BFS root-> left -> right
+using a queue
+
+```
+
+```java
+public int maxDepth(TreeNode root) {
+    if(root == null) return 0;
+    Queue<TreeNode> queue = new LinkedList<>();
+    queue.add(root);
+    int count = 0;
+    while(!queue.isEMpty()) {
+        TreeNode currHead = queue.poll();
+        int size = queue.size();
+        while(size > 0 ) {
+            if(currHead.left !=null) {
+                queue.add(currHead.left);
+            }
+            if(currHead.right != null) {
+                queue.add(currHead.right);
+            }
+            size--;
+         }
+        count++;
+    }
+    return count;
+}
 ```
