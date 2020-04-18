@@ -109,9 +109,10 @@ public int maxDepth(TreeNode root) {
     queue.add(root);
     int count = 0;
     while(!queue.isEMpty()) {
-        TreeNode currHead = queue.poll();
+        
         int size = queue.size();
         while(size > 0 ) {
+        TreeNode currHead = queue.poll(); //same level 
             if(currHead.left !=null) {
                 queue.add(currHead.left);
             }
